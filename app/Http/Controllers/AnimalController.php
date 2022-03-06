@@ -24,12 +24,37 @@ class AnimalController extends Controller
 
     public function store(Request $request)
     {
-        $animal = Animal::create($request->all());
+        $validationData = $request->validate([
+            'name' => 'required|max:6',
+            'age' => 'required|max:2|number',
+            'gender' => 'required',
+            'species' => 'required',
+            'breed' => 'required'
+        ], [
+            'name.required' => 'Name is required',
+            'age.required' => 'Age is required',
+            'gender.required' => 'Gender is required',
+            'species.required' => 'Species is required',
+            'breed.required' => 'Breed is required'
+        ]);
+
+
+        $animal = Animal::create($validationData);
+
         return response()->json($animal, 200);
     }
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|max:6',
+            'age' => 'required|max:2',
+            'gender' => 'required',
+            'species' => 'required',
+            'breed' => 'required',
+            'for_adoption' => 'required',
+        ]);
+        
         $animal = Animal::findOrFail($id);
         $animal->update($request->all());
 

@@ -19,8 +19,12 @@ use App\Http\Controllers\AnimalController;
 //     return $request->user();
 
 
-Route::group(['prefix'=>'animals'], function () {
-    Route::get('/', [AnimalController::class, 'index']);
-    Route::get('/{id}', [AnimalController::class, 'show']);
-
+Route::controller(AnimalController::class)->group(function () {
+    Route::group(['prefix' => 'animal'], function () {
+        Route::get('/', 'index');
+        Route::get('/{id}', 'show');
+        Route::post('/{id}', 'store');
+        Route::post('/update/{id}', 'update');
+        Route::post('/delete/{id}', 'delete');
+    });
 });
