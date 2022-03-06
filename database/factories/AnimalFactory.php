@@ -14,12 +14,12 @@ class AnimalFactory extends Factory
     public function definition()
     {
         return [
-            "name" => $this->faker->name,
+            "name" => $this->faker->firstName,
             "gender" => $this->faker->randomElement(["Male", "Female"]),
-            "age" => $this->faker->numberBetween(5,15),
+            "age" => $this->faker->numberBetween(5, 15),
             "species" => $this->faker->randomElement(["Cat", "Dog"]),
-            "breed" => $this->faker->text(10),
-            "status" => $this->faker->randomElement(["Ready", "Not Ready"]),
+            "breed" => $this->faker->lastname,
+            "for_adoption" => $this->faker->boolean(),
         ];
     }
 }
