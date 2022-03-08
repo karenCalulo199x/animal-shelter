@@ -12,9 +12,13 @@ class AnimalController extends Controller
     {
         $animal = Animal::all();
 
-        return response()->json($animal, 200);
+        if (request()->ajax()) {
+            return response()->json($animal, 200);
+        }
+
+        return view('animals.index', compact('animal'));
     }
- 
+
     public function show($id)
     {
         $animal = Animal::find($id);
@@ -26,7 +30,7 @@ class AnimalController extends Controller
     {
         $validationData = $request->validate([
             'name' => 'required|max:6',
-            'age' => 'required|max:2|number',
+            'age' => 'required|max:16|numeric',
             'gender' => 'required',
             'species' => 'required',
             'breed' => 'required'
@@ -41,7 +45,23 @@ class AnimalController extends Controller
 
         $animal = Animal::create($validationData);
 
-        return response()->json($animal, 200);
+        if ($request->ajax()) {
+            return response()->json($animal, 200);
+        }
+
+        return redirect()->route('animals.index');
+    }
+
+    public function create()
+    {
+        return view('animals.add_edit');
+    }
+
+    public function edit($id)
+    {
+        $animal = Animal::find($id);
+
+        return view('animals.add_edit', compact('animal'));
     }
 
     public function update(Request $request, $id)
@@ -54,18 +74,26 @@ class AnimalController extends Controller
             'breed' => 'required',
             'for_adoption' => 'required',
         ]);
-        
+
         $animal = Animal::findOrFail($id);
         $animal->update($request->all());
 
-        return response()->json($animal, 200);
+        if ($request->ajax()) {
+            return response()->json($animal, 200);
+        }
+
+        return redirect()->route('animals.index');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
         $animal = Animal::findOrFail($id);
         $animal->delete();
 
-        return response()->json(null, 200);
+        if ($request->ajax()) {
+            return response()->json(null, 200);
+        }
+
+        return redirect()->route('animals.index');
     }
 }

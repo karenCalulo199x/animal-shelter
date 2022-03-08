@@ -20,7 +20,7 @@ class CreateAnimalsTable extends Migration
             $table->integer('age');
             $table->string('species');
             $table->string('breed');
-            $table->boolean('for_adoption');
+            $table->boolean('for_adoption')->default('0');
             $table->timestamps();
         });
     }
