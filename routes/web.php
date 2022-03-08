@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RescuerController;
 use App\Http\Controllers\SampleCotroller;
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +16,8 @@ use App\Http\Controllers\SampleCotroller;
 |
 */
 
-Route::get('/', function () {
-    return redirect('home');
-});
 
-
-Route::get('home', [HomeController::class, 'home'])->name('dashboard');
+Route::get('/', [HomeController::class, 'home'])->name('dashboard');
 
 Route::controller(AnimalController::class)->group(function () {
     Route::group(['prefix' => 'animals'], function () {
@@ -38,3 +35,5 @@ Route::controller(AnimalController::class)->group(function () {
         });
     });
 });
+
+Route::resource('rescuers', RescuerController::class);

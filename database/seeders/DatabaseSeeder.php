@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Animal;
+use App\Models\Rescuer;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-       Animal::factory(5)->create();
+        Animal::factory(5)->create();
+        Rescuer::factory(10)->create();
     }
 }
