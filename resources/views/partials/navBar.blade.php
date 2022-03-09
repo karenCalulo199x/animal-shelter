@@ -11,7 +11,7 @@
             <a class="nav-item nav-link" href="{{route('animals.index')}}">Animals<span
                     class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="{{route('rescuers.index')}}">Rescuers</a>
-            <a class="nav-item nav-link" href="#">Employees</a>
+            <a class="nav-item nav-link" href="{{route('employees.index')}}">Employees</a>
             <a class="nav-item nav-link" href="#">Adopters</a>
             <a class="nav-item nav-link" href="#">Donations</a>
         </div>

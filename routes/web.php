@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RescuerController;
 use App\Http\Controllers\SampleCotroller;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +39,5 @@ Route::controller(AnimalController::class)->group(function () {
 });
 
 Route::resource('rescuers', RescuerController::class);
+
+Route::resource('employees', EmployeeController::class);
