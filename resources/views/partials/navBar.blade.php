@@ -13,7 +13,14 @@
             <a class="nav-item nav-link" href="{{route('rescuers.index')}}">Rescuers</a>
             <a class="nav-item nav-link" href="{{route('employees.index')}}">Employees</a>
             <a class="nav-item nav-link" href="#">Adopters</a>
-            <a class="nav-item nav-link" href="#">Donations</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" href="#">Donations </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{route('donations.index', 'Cash')}}">Cash Donations</a>
+                    <a class="dropdown-item" href="{{route('donations.index', 'Items')}}">Items Donations</a>
+                </div>
+            </li>
         </div>
     </div>
 </nav>
