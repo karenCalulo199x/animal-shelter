@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RescuerController;
-use App\Http\Controllers\SampleCotroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +41,18 @@ Route::controller(AnimalController::class)->group(function () {
 Route::resource('rescuers', RescuerController::class);
 
 Route::resource('employees', EmployeeController::class);
+
+// Route::resource('donations', DonationController::class);
+Route::controller(DonationController::class)->group(function () {
+    Route::group(['prefix' => 'donations'], function () {
+        Route::name('donations.')->group(function () {
+
+            Route::get('/{type}/create/', 'create')->name('create');
+            Route::post('/{type}/store/', 'store')->name('store');
+            Route::get('/{type}/edit/{id}', 'edit')->name('edit');
+            Route::post('/{type}/update/{id}', 'update')->name('update');
+            Route::delete('/{type}/delete/{id}/', 'destroy')->name('destroy');
+            Route::get('/{type}', 'index')->name('index');
+        });
+    });
+});
