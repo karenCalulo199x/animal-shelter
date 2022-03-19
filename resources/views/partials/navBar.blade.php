@@ -14,7 +14,8 @@
                 href="{{route('rescuers.index')}}">Rescuers</a>
             <a class="nav-item nav-link {{(request()->is('employees*')) ? 'active' : ''}}"
                 href="{{route('employees.index')}}">Employees</a>
-            <a class="nav-item nav-link " href="#">Adopters</a>
+            <a class="nav-item nav-link {{(request()->is('adopters*')) ? 'active' : ''}}"
+                href="{{route('adopters.index')}}">Adopters</a>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle {{(request()->is('donations*')) ? 'active' : ''}}"
                     id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
