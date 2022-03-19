@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Animal;
 use App\Models\Donation;
 use App\Models\Employee;
+use App\Models\Health;
 use App\Models\Rescuer;
 
 class DatabaseSeeder extends Seeder
@@ -24,5 +25,6 @@ class DatabaseSeeder extends Seeder
         Employee::factory(10)->create();
         Donation::factory(15)->create();
         Adopter::factory(15)->create();
+        Health::factory(5)->create();
     }
 }
