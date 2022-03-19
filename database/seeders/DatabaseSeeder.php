@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Adopter;
 use Illuminate\Database\Seeder;
 use App\Models\Animal;
 use App\Models\Donation;
@@ -22,5 +23,6 @@ class DatabaseSeeder extends Seeder
         Rescuer::factory(10)->create();
         Employee::factory(10)->create();
         Donation::factory(15)->create();
+        Adopter::factory(15)->create();
     }
 }

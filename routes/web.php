@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdopterController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RescuerController;
+use App\Models\Adopter;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,21 @@ Route::controller(DonationController::class)->group(function () {
             Route::post('/{type}/update/{id}', 'update')->name('update');
             Route::delete('/{type}/delete/{id}/', 'destroy')->name('destroy');
             Route::get('/{type}', 'index')->name('index');
+        });
+    });
+});
+
+Route::controller(AdopterController::class)->group(function () {
+    Route::group(['prefix' => 'adopters'], function () {
+        Route::name('adopters.')->group(function () {
+
+            Route::get('/', 'index')->name('index');
+
+            Route::post('/store', 'store')->name('store');
+
+            Route::post('/update/{id}', 'update')->name('update');
+
+            Route::delete('/delete/{id}', 'destroy')->name('destroy');
         });
     });
 });
