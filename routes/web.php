@@ -5,6 +5,7 @@ use App\Http\Controllers\AdopterController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HealthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RescuerController;
 use App\Models\Adopter;
@@ -70,6 +71,23 @@ Route::controller(AdopterController::class)->group(function () {
             Route::post('/update/{id}', 'update')->name('update');
 
             Route::delete('/delete/{id}', 'destroy')->name('destroy');
+        });
+    });
+});
+
+// Route::resource('healths', HealthController::class);
+
+Route::controller(HealthController::class)->group(function () {
+    Route::group(['prefix' => 'healths'], function () {
+        Route::name('healths.')->group(function () {
+
+            Route::get('/', 'index')->name('index');
+
+            Route::post('/store', 'store')->name('store');
+
+            Route::post('/update/{id}', 'update')->name('update');
+
+            Route::post('/delete/{id}', 'destroy')->name('destroy');
         });
     });
 });

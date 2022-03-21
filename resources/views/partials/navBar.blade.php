@@ -27,6 +27,8 @@
                         href="{{route('donations.index', 'Items')}}">Items Donations</a>
                 </div>
             </li>
+            <a class="nav-item nav-link {{(request()->is('healths*')) ? 'active' : ''}}"
+                href="{{route('healths.index')}}">Health</a>
         </div>
     </div>
 </nav>
